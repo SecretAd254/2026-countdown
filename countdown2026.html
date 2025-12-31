@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Countdown to 2026 🎉</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  background: black;
+  color: white;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+h1 {
+  margin-top: 40px;
+  font-size: 2.2em;
+  color: #ff00ff;
+}
+
+.timer {
+  margin-top: 60px;
+  font-size: 2em;
+}
+
+.days { color: red; }
+.hours { color: yellow; }
+.minutes { color: cyan; }
+.seconds { color: lime; }
+</style>
+</head>
+
+<body>
+
+<h1>🎆 Countdown to 2026 🎆</h1>
+
+<div class="timer">
+  <div class="days">00 Days</div>
+  <div class="hours">00 Hours</div>
+  <div class="minutes">00 Minutes</div>
+  <div class="seconds">00 Seconds</div>
+</div>
+
+<script>
+const target = new Date("December 31, 2025 23:59:59").getTime();
+
+setInterval(() => {
+  const now = new Date().getTime();
+  const diff = target - now;
+
+  if (diff <= 0) {
+    document.body.innerHTML =
+      "<h1 style='color:lime'>🎉 HAPPY NEW YEAR 2026 🎉</h1>";
+    return;
+  }
+
+  const d = Math.floor(diff / (1000*60*60*24));
+  const h = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+  const m = Math.floor((diff % (1000*60*60)) / (1000*60));
+  const s = Math.floor((diff % (1000*60)) / 1000);
+
+  document.querySelector(".days").textContent = d + " Days";
+  document.querySelector(".hours").textContent = h + " Hours";
+  document.querySelector(".minutes").textContent = m + " Minutes";
+  document.querySelector(".seconds").textContent = s + " Seconds";
+}, 1000);
+</script>
+
+</body>
+</html>
